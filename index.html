@@ -1,0 +1,131 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Liberia Food Security</title>
+              <img src="ocha.jpg" style= height="72"; width="46"; align="middle"> 
+                <img src="food.jpg" style= height="270"; width="180"; align="middle">
+                <img src="Liberia.jpg" style= height="120"; width="66"; align="RIGHT">
+                <img src="agriculture.png" style= height="120"; width="66"; align="RIGHT">
+
+                
+        <script type="text/javascript" src="js/jquD154.js"></script>
+        <style type="text/css">
+            #container {
+	height: 500px;
+	min-width: 510px;
+	max-width: 800px;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+            }
+            .loading {
+                margin-top: 10em;
+                text-align: center;
+                color: gray;
+            }
+        </style>
+        <script type="text/javascript">
+		
+            $(function () {
+
+                // Prepare demo data
+var data = [{ 'hc-key': 'lr-gp', value: 3, 'agr':"FCA", 'csh':"FCA, ZOA", 'fod':"Sam's Purse", 'tra':"FCA, ZOA, Sam's Purse"},
+{ 'hc-key': 'lr-bg', value: 5, 'agr':"ACDI/VOCA, BRAC, FAO ", 'csh':"ACDI/VOCA, FAO, Save, ZOA", 'fod':"ACDI/VOCA", 'tra':"ACDI/VOCA, BRAC, FAO,ZOA" },
+{ 'hc-key': 'lr-586', value: 2, 'agr':"BRAC, FAO", 'csh':"", 'fod':"", 'tra':"BRAC, FAO"},
+{ 'hc-key': 'lr-cm', value: 4 , 'agr':"FAO, FCA, PCI", 'csh':"FCA, PCI, ZOA", 'fod':"", 'tra':"FAO, FCA, PCI, ZOA"},
+{ 'hc-key': 'lr-lf', value: 4, 'agr':"BRAC, FAO, Mercy Corps", 'csh':"FAO, Mercy Corps", 'fod':"", 'tra':"BRAC, FAO, Mercy Corps, Sam's Purse" },
+{ 'hc-key': 'lr-mo', value: 6, 'agr':"BRAC, Mercy Corps, ZOA", 'csh':"ACF, Africare, Mercy Corps, ZOA", 'fod':"", 'tra':"ACF, BRAC, Mercy Corps, Sam's Purse, ZOA"},
+{ 'hc-key': 'lr-mg', value: 6, 'agr':"BRAC, FAO, Mercy Corps, ZOA", 'csh':"Mercy Corps, Save, ZOA", 'fod':"", 'tra':"BRAC, FAO, Mercy Corps, ZOA" },
+{ 'hc-key': 'lr-ni', value: 4, 'agr':"ACDI/VOCA, BRAC, FAO, OXFAM", 'csh':"ACDI/VOCA, FAO, OXFAM", 'fod':"ACDI/VOCA", 'tra':"ACDI/VOCA, BRAC,FOA, OXFAM" },
+ { 'hc-key': 'lr-ri', value: 0, 'agr':"", 'csh':"", 'fod':"", 'tra':"" },
+{ 'hc-key': 'lr-gd', value: 3, 'agr':"FAO, OXFAM, WHH", 'csh':"OXFAM", 'fod':"", 'tra':"FAO, OXFAM, WHH" },
+{ 'hc-key': 'lr-si', value: 1, 'agr':"WHH", 'csh':"", 'fod':"", 'tra':"WHH" },
+{ 'hc-key': 'lr-rg', value: 3, 'agr':"FAO, OXFAM, WHH", 'csh':"OXFAM", 'fod':"", 'tra':"FAO, OXFAM, WHH" },
+{ 'hc-key': 'lr-gk', value: 0, 'agr':"", 'csh':"", 'fod':"", 'tra':"" },
+{ 'hc-key': 'lr-my', value: 1, 'agr':"FAO", 'csh':"", 'fod':"", 'tra':"FAO" },
+{ 'hc-key': 'lr-bm', value: 4, 'agr':"FAO, PCI, PLAN", 'csh':"ACF, PCI, ZOA", 'fod':"PLAN", 'tra':"ACF, FAO, PCI, PLAN,ZOA" }];
+
+                    
+                // Initiate the chart
+                $('#container').highcharts('Map', {
+                    
+                    title : {
+                        text : 'Liberia Food Security Cluster'
+                    },
+
+                    subtitle : {
+                      text : 'Implementation by Activity /Click or Mouse over on the map to see the data set. '
+                    },
+
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+
+                    colorAxis: {
+                        min: 0
+                    },
+/*start*/
+
+           plotOptions: {
+                series: {
+                    events: {
+                        click: function (e) {
+                            var text = '<b>Activities and Organization</b><br><b>Agricultural Inputs: </b>' + e.point.agr + '<br><b>Cash Assistance: </b>' + e.point.csh + '<br><b>Food Assistance: </b>' + e.point.fod + '<br><b>Training: </b>' + e.point.tra;
+                            if (!this.chart.clickLabel) {
+                                this.chart.clickLabel = this.chart.renderer.label(text, 0, 250)
+                                    .css({
+                                        width: '210px'
+                                    })
+                                    .add();
+                            } else {
+                                this.chart.clickLabel.attr({
+                                    text: text
+                                });
+                            }
+                        }
+                    }
+                }
+            },
+                    
+					
+					
+					
+					
+					/*  end*/
+					series : [{
+                        data : data,
+                        mapData: Highcharts.maps['countries/lr/lr-all'],
+                        joinBy: 'hc-key',
+                        name: 'Number of organization',
+                        states: {
+                            hover: {
+                                color: '#BADA55'
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }]
+                });
+            });
+			
+       </script>
+    </head>
+    <body>
+        <script src="js/higBCE1.js"></script>
+        <script src="js/expB2AE.js"></script>
+        <script src="js/lr-CD5E.js"></script>
+
+
+        <div id="container"></div>
+                
+
+    </body>
+</html>
